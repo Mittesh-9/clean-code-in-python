@@ -1,0 +1,60 @@
+// Comments
+// No matter how hard we try to write clean code, there are still going to be parts of your program that need additional explanation. Comments allow us to quickly tell other developers (and our future selves) why we wrote it in the manner that we did. Keep in mind that adding too many comments can make your code messier than it would be without them.
+
+// What's the difference between code comments and documentation?
+
+// Type	Answers	Stakeholder
+// Documentation	When and How	Users
+// Code Comments	Why	Developers
+// Clean Code	What	Developers
+// For more on the differences between code comments and documentation, review the Documenting Python Code and Projects article.
+
+// 1. Don't comment bad code, rewrite it
+// Commenting bad code -- i.e., # TODO: RE-WRITE THIS TO BE BETTER -- only helps you in the short term. Sooner or later one of your colleagues will have to work with your code and they'll end up rewriting it after spending multiple hours trying to figure out what it does.
+
+// 2. Readable code doesn't need comments
+// If your code is readable enough you don't need comments. Adding useless comments will only make your code less readable. Here's a bad example:
+
+// This checks if the user with the given ID doesn't exist.
+if not User.objects.filter(id=user_id).exists():
+    return Response({
+        'detail': 'The user with this ID does not exist.',
+    })
+// As a general rule, if you need to add comments, they should explain "why" you did something rather than "what" is happening.
+
+// 3. Don't add noise comments
+// Don't add comments that do not add anything of value to the code. This is bad:
+
+numbers = [1, 2, 3, 4, 5]
+
+// This variable stores the average of list of numbers.
+average = sum(numbers) / len(numbers)
+print(average)
+// This is also bad
+
+// 4. Use the correct types of comments
+// Most programming languages have different comment types. Learn their differences and use them accordingly. You should also learn the comment documentation syntax. A good example:
+
+def model_to_dict(instance, fields=None, exclude=None):
+    // """
+    // Returns a dict containing the data in ``instance`` suitable for passing as
+    // a Form's ``initial`` keyword argument.
+    // ``fields`` is an optional list of field names. If provided, return only the
+    // named.
+    // ``exclude`` is an optional list of field names. If provided, exclude the
+    // named from the returned dict, even if they are listed in the ``fields``
+    // argument.
+    // """
+    opts = instance._meta
+    data = {}
+    for f in chain(opts.concrete_fields, opts.private_fields, opts.many_to_many):
+        if not getattr(f, 'editable', False):
+            continue
+        if fields is not None and f.name not in fields:
+            continue
+        if exclude and f.name in exclude:
+            continue
+        data[f.name] = f.value_from_object(instance)
+    return data
+// 5. Don't leave commented out code
+// The worst thing you can do is to leave code commented out in your programs. All the debug code or debug messages should be removed before pushing to a version control system, otherwise, your colleagues will be scared of deleting it and your commented code will stay there forever.
