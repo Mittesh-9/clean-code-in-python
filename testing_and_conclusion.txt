@@ -1,0 +1,12 @@
+Testing
+Quality software doesn't come without tests. Testing software allows us to discover bugs and errors in the software before it is deployed. Tests are of the same importance as production code and you should spend a fair amount of time working on them.
+
+For more on testing clean code and writing clean test code, review the following articles:
+
+Testing in Python >> https://testdriven.io/blog/testing-python/
+Modern Test-Driven Development in Python >> https://testdriven.io/blog/modern-tdd/
+
+Conclusion
+Writing clean code is hard. There's no single recipe you can follow to write good, clean code. It takes time and experience to master. We've looked at some of the coding standards and general guidelines which can help you write better code. One of the best pieces of advice I can give you is to stay consistent and try to write simple code that's easy to test. If you find that your code is hard to test, it's probably hard to use.
+
+If you're looking for more, check out the Complete Python Development Guide >> https://testdriven.io/guides/complete-python/ , where you'll learn how to write clean code from a practical, learning-by-doing approach.
